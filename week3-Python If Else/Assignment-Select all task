@@ -1,0 +1,37 @@
+-- 1. Select All
+-- Fetches all rows and columns from the table.
+SELECT * FROM CITY;
+
+-- 2. Select By ID
+-- Fetches all details for a specific ID.
+SELECT * FROM CITY WHERE ID = 1661;
+
+-- 3. Employee Names
+-- Lists all employee names from the EMPLOYEES table.
+SELECT NAME FROM EMPLOYEES;
+
+-- 4. Japanese Cities
+-- Filters cities from Japan.
+SELECT * FROM CITY WHERE COUNTRYCODE = 'JPN';
+
+-- 5. Weather Observation Station 1
+-- Returns city and state from STATION table.
+SELECT CITY, STATE FROM STATION;
+
+-- 6. Weather Observation Station 3
+-- Filters cities from STATION where ID is even.
+SELECT CITY FROM STATION WHERE MOD(ID, 2) = 0;
+
+-- 7. Weather Observation Station 4
+-- Calculates difference between total and distinct city names.
+SELECT COUNT(CITY) - COUNT(DISTINCT CITY) FROM STATION;
+
+-- 8. Weather Observation Station 5
+-- Finds cities with the shortest and longest names and their lengths.
+(SELECT CITY, LENGTH(CITY) FROM STATION ORDER BY LENGTH(CITY), CITY LIMIT 1)
+UNION
+(SELECT CITY, LENGTH(CITY) FROM STATION ORDER BY LENGTH(CITY) DESC, CITY LIMIT 1);
+
+-- 9. Average Population
+-- Calculates the average population rounded down.
+SELECT FLOOR(AVG(POPULATION)) FROM CITY;
